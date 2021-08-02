@@ -14,7 +14,7 @@ public class RegisterBusinessTest {
         Exception exception = assertThrows(ArgumentNullException.class, () ->
                 registerBusiness.register(null, new Speaker())
         );
-        assertEquals("no error", exception.getMessage());
+        assertEquals("First name is required.", exception.getMessage());
     }
 
     @Test
@@ -26,7 +26,7 @@ public class RegisterBusinessTest {
         Exception exception = assertThrows(ArgumentNullException.class, () ->
                 registerBusiness.register(null, speaker)
         );
-        assertEquals("no error", exception.getMessage());
+        assertEquals("Last name is required.", exception.getMessage());
     }
 
     @Test
@@ -37,9 +37,9 @@ public class RegisterBusinessTest {
         speaker.setFirstName("Hello");
         speaker.setLastName("There");
         Exception exception = assertThrows(ArgumentNullException.class, () ->
-            registerBusiness.register(null, speaker)
+                registerBusiness.register(null, speaker)
         );
-        assertEquals("no error", exception.getMessage());
+        assertEquals("Email name is required.", exception.getMessage());
     }
 
     @Test
@@ -51,9 +51,9 @@ public class RegisterBusinessTest {
         speaker.setLastName("There");
         speaker.setEmail("Hello@Email@Email");
         Exception exception = assertThrows(ArgumentNullException.class, () ->
-            registerBusiness.register(null, speaker)
+                registerBusiness.register(null, speaker)
         );
-        assertEquals("no error", exception.getMessage());
+        assertEquals("Speaker doesn't meet our standard rules.", exception.getMessage());
     }
 
     @Test
@@ -68,6 +68,6 @@ public class RegisterBusinessTest {
         Exception exception = assertThrows(SaveSpeakerException.class, () ->
                 registerBusiness.register(null, speaker)
         );
-        assertEquals("no error", exception.getMessage());
+        assertEquals("Can't save a speaker.", exception.getMessage());
     }
 }
